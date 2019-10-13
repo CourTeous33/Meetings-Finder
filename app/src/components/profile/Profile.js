@@ -25,8 +25,8 @@ class Profile extends Component{
                     response.json().then((data) => {
                         console.log(data[1]);
                         const events = {
-                            1: [1],
-                            2: [1],
+                            1: [],
+                            2: [],
                             3: [],
                             4: [],
                             5: [],
@@ -51,9 +51,8 @@ class Profile extends Component{
     }
 
     render () {
-
         return this.state.isLoading ? (
-            <h1>Loading...</h1>
+            <h1>Loading</h1>
         ) : (
           <div className={"profile-content-container"}>
               <p>This is profile</p>
