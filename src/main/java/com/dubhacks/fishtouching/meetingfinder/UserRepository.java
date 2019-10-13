@@ -37,6 +37,9 @@ public class UserRepository {
     public void addNewUser(String user) {
     	Gson gson=new Gson();
     	User u = gson.fromJson(user,User.class);
+    	System.out.println(u.getUid());
+    	System.out.println(u.getPassword());
+    	System.out.println(u.getEmail());
     	String query = "INSERT INTO Users (Uid, Password, Email)" + " VALUES (?, ?, ?)";
     	jdbcTemplate.update(query, u.getUid(), u.getPassword(), u.getEmail());
     }

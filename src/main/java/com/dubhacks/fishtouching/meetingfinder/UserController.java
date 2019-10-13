@@ -51,7 +51,6 @@ public class UserController {
 	
 	@PostMapping(path = "/create-user")
 	public @ResponseBody ResponseEntity<?> addNewUser(@RequestBody String user) throws Exception {
-		System.out.println(user);
 		if (user != null) {
 			try {
 				userRepository.addNewUser(user);
