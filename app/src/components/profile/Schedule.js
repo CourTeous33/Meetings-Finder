@@ -1,54 +1,51 @@
-import React from 'react';
+import React, { Component }from 'react';
 import ScheduleBlock from './ScheduleBlock';
-import { Row, Col } from 'antd';
+import '../../styles/Shedule.css';
+import PropTypes from 'prop-types';
 
-const Schedule = ({ events }) => {
-    console.log('schedule', events)
+class Schedule extends Component {
 
-    let blockList = [];
-    let blockSubList = [];
-    let i;
-    for (i = 1 ; i <= 7 ; i++) {
-        let j;
-        for (j = 0 ; j <= 1440 ; j += 15) {
-            blockSubList = blockSubList.concat([...blockSubList, {"day": i, "time": j, "checked": false}]);
+    constructor(props) {
+        super();
+        let blockList = [];
+        let blockSubList = [];
+        let i;
+        for (i = 0 ; i < 96 ; i += 1) {
+            let j;
+            for (j = 1 ; j <= 7 ; j += 1) {
+                blockSubList = blockSubList.concat([{"day": j, "time": i, "checked": props.events[j].includes(i)}]);
+            }
+            blockList = blockList.concat([blockSubList]);
+            blockSubList = [];
         }
-        blockList = blockList.concat([...blockList, blockSubList]);
-        blockSubList = [];
+        this.state = {
+            blockList: blockList,
+        };
+        console.log(props.events);
     }
 
-    console.log('block list', blockList);
-    return (
-        <div className={"profile-schedule"}>
-            <Row>
-                {blockList.map(item =>
-                    <Col span={3}>
-                        {/*<ScheduleBlock*/}
-                        {/*day={subItem.name}*/}
-                        {/*time={subItem.time}*/}
-                        {/*checked={subItem.checked}*/}
-                        {/*/>*/}
-                        <p>1</p>
-                    </Col>
+    componentDidMount() {
+        console.log(this.props.events);
+    }
+
+    render() {
+        return (
+            <div className={"profile-schedule"}>
+                {this.state.blockList.map(item =>
+                    <div className="profile-schedule-row">
+                        {item.map(subItem =>
+                            <ScheduleBlock
+                                day={subItem.name}
+                                time={subItem.time}
+                                checked={subItem.checked}
+                            />
+                        )}
+                    </div>
                 )}
-            </Row>
-            {blockList.map(item =>
-                <Row>
-                    {item.map(subItem => {
-                        console.log('sub:', subItem);
-                        return <Col span={3}>
-                            {/*<ScheduleBlock*/}
-                            {/*day={subItem.name}*/}
-                            {/*time={subItem.time}*/}
-                            {/*checked={subItem.checked}*/}
-                            {/*/>*/}
-                            <p>1</p>
-                        </Col>
-                    })}
-                </Row>
-            )}
-        </div>
-    );
-};
+            </div>
+        );
+    };
+}
+
 
 export default Schedule;

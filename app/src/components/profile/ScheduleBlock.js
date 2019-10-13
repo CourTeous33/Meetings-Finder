@@ -11,14 +11,14 @@ const ScheduleBlock = ({ day, time, checked  }) => {
                 className={"profile-schedule-block-checked"}
                 onClick={(e) => onClick(e, day, time)}
             >
-                <p>1</p>
+
             </div>
         ) : (
             <div
                 className={"profile-schedule-block-unchecked"}
                 onClick={(e) => onClick(e, day, time)}
             >
-                <p>1</p>
+
             </div>
         );
 

@@ -1,0 +1,28 @@
+.profile-schedule-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 3px;
+}
+
+.profile-schedule-block-checked, .profile-schedule-block-unchecked{
+    width: 13.5%;
+    height: 18px;
+    border-radius: 4pt;
+}
+
+.profile-schedule-block-unchecked{
+    background-color: #999999;
+}
+
+.profile-schedule-block-checked {
+    background-color: #09d3ac;
+}
+
+.profile-schedule {
+    width: 60%;
+}
+
+body {
+    background-color: #616161;
+}
