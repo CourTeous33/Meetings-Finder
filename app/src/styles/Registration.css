@@ -20,3 +20,9 @@
 .formregis .container button {
     margin-top: 3rem;
 }
+
+.formregis .container h2 {
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+    color: #616161;
+}
