@@ -52,7 +52,7 @@ export default class InvitePage extends React.Component {
         users.push({key: this.state.counter,
                     name: this.state.username});
     /*    axios
-            .get()
+            .get('')
             .then(res => {
                 // TODO: interpret response into this
                 this.setState(prevState =>({
@@ -127,7 +127,7 @@ export default class InvitePage extends React.Component {
                 <div>
                     {this.state.timeFind ?
                         /* TODO: use proper  props name here */
-                        <Schedule blockedList={this.state.timeData} /> :
+                        <Schedule blockList={this.state.timeData} /> :
                         <p> </p>
                     }
                 </div>
