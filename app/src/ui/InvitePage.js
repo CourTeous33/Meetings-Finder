@@ -1,26 +1,50 @@
 import React from 'react';
 import axios from 'axios';
 import {Button, Icon} from 'antd';
-import "../styles/InvitePage.css"
+import "../styles/InvitePage.css";
+import Schedule from "../components/profile/Schedule";
 
 export default class InvitePage extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state ={
             meetingUser: [],
             counter: 3,
-            username: ""
-        }
+            username: "",
+            timeFind: false,
+            timeData: []
+        };
         this.handleInvite = this.handleInvite.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        /*
+        axios
+            .get()
+            .then(res => {
+                // TODO: interpret response into this
+                this.setState({
+                        timeData: [res.timeData]
+                    })
+                )
+            })
+            .catch(err=>{
+                alert("Some error happened. Please try again later.");
+            });*/
+        this.setState({
+            timeFind: true
+        })
+    };
 
     handleChange = (event) => {
         this.setState({
             username: event.target.value
         });
-    }
+    };
 
     handleInvite = (event) => {
         event.preventDefault();
@@ -28,7 +52,7 @@ export default class InvitePage extends React.Component {
         users.push({key: this.state.counter,
                     name: this.state.username});
     /*    axios
-            .post()
+            .get()
             .then(res => {
                 // TODO: interpret response into this
                 this.setState(prevState =>({
@@ -50,12 +74,12 @@ export default class InvitePage extends React.Component {
         event.persist();
         let newMeetingUser = this.state.meetingUser.filter(curUser => {
             return curUser.key !== key;
-        })
+        });
         this.setState( {
             meetingUser: newMeetingUser
         });
         console.log(this.state.meetingUser);
-    }
+    };
 
     render() {
         const plusStyle = {
@@ -98,7 +122,14 @@ export default class InvitePage extends React.Component {
                     </div>
                 </div>
                 <div className="find">
-                    <Button style={buttonStyle}>Find time</Button>
+                    <Button style={buttonStyle} onClick={this.handleSubmit}>Find time</Button>
+                </div>
+                <div>
+                    {this.state.timeFind ?
+                        /* TODO: use proper  props name here */
+                        <Schedule blockedList={this.state.timeData} /> :
+                        <p> </p>
+                    }
                 </div>
             </div>
         )
