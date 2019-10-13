@@ -23,4 +23,11 @@ public class UserRepository {
     	String query = "select * from events where Uid = ?";
     	return jdbcTemplate.query(query, new EventRowMapper(), Uid);
     }
+    
+    public void importUserEvent(List<Event> list) {
+    	for (Event e: list) {
+    		String query = "INSERT INTO events (Uid, Weekday, StartTime)" + " VALUES (?, ?, ?, ?)";
+    		jdbcTemplate.update(query, e.getUid(), e.getWeekDay(), e.getStartTime());
+    	}	
+    }
 }

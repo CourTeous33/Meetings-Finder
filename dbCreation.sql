@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS times (
 CREATE TABLE IF NOT EXISTS Events (
   Uid VARCHAR(256) NOT NULL,
   Weekday INT,
-  StartTime BIGINT,
-  EndTime BIGINT,
+  StartTime INT,
   foreign key (Uid) references Users(Uid)
 ) ENGINE=INNODB;

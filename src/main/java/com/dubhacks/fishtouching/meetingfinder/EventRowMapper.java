@@ -13,8 +13,7 @@ public class EventRowMapper implements RowMapper<Event>  {
 		Event event = new Event();
 		event.setUid(rs.getString("Uid"));
 		event.setWeekDay(rs.getInt("WeekDay"));
-		event.setStartTime(rs.getLong("StartTime"));
-		event.setEndTime(rs.getLong("EndTime"));
+		event.setStartTime(rs.getInt("StartTime"));
         return event;
 	}
 }

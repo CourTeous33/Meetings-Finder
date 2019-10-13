@@ -11,19 +11,17 @@ public class Event {
 	@EmbeddedId
 	private String Uid;
 	private int weekDay;
-	private long startTime;
-	private long endTime;
+	private int startTime;
 		
 	public Event() {
 		super();
 	}
 
-	public Event(String uid, int weekDay, long startTime, long endTime) {
+	public Event(String uid, int weekDay, int startTime) {
 		super();
 		Uid = uid;
 		this.weekDay = weekDay;
 		this.startTime = startTime;
-		this.endTime = endTime;
 	}
 
 	public String getUid() {
@@ -42,20 +40,12 @@ public class Event {
 		this.weekDay = weekDay;
 	}
 
-	public long getStartTime() {
+	public int getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(long startTime) {
+	public void setStartTime(int startTime) {
 		this.startTime = startTime;
-	}
-
-	public long getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(long endTime) {
-		this.endTime = endTime;
 	}
 	
 }

@@ -32,7 +32,22 @@ public class UserController {
 		}
 	}
 	
-	
+	@GetMapping(path="/test")
+	public @ResponseBody ResponseEntity<?> importUserEvents() throws Exception {
+		CurrentWeekGetter cwg = new CurrentWeekGetter();
+		long startTime = cwg.getStartTimeOfWeek();
+		long endTime = cwg.getEndTimeOfWeek();
+		
+		Ics2BusyEventList fileReader = new Ics2BusyEventList("C:/Users/LucyN/Desktop/dubhack/Meetings-Finder/src/main/resources/test.ics", startTime, endTime);
+		List<Event> list = fileReader.process(fileReader.read());
+		
+		try {
+			userRepository.importUserEvent(list);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	 
 }
 
