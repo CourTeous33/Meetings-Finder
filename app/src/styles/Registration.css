@@ -6,7 +6,7 @@
     line-height: 1.5;
     text-align: left;
     background-color: #eeeeee;
-    margin-top: 10rem;
+    margin-top: 8rem;
     margin-left: 20rem;
     margin-right: 20rem;
     color: #8e8e8e;
@@ -15,4 +15,8 @@
     font-size: 5rem;
     margin-bottom: 3rem;
     color: #616161;
+}
+
+.formregis .container button {
+    margin-top: 3rem;
 }
