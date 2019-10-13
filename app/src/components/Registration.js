@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import '../styles/Registration.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Form} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
+import Container from "react-bootstrap/Container";
+import Helmet from "react-helmet";
 
 class Registration extends Component {
     constructor(props) {
@@ -16,21 +21,37 @@ class Registration extends Component {
 
     render() {
         return (
-            <div className={"registrationTable"} >
-                <h3>Register</h3>
-                <form method="post" name="registrationForm" onSubmit={this.handleSubmit}>
-                    <label>
-                        Username
-                        <input type="text" name = "username" value={this.state.field.username}/>
-                    </label>
-                    <label>
-                        Password:
-                        <input type="text" name = "password" value={this.state.field.password}/>
-                    </label>
-                    <label>
-                        <input type="submit" className="button" value="Register"/>
-                    </label>
-                </form>
+            <div className="formregis">
+                <Helmet>
+                    <style>{'body { background-color: #eeeeee; }'}</style>
+                </Helmet>
+
+                <Container>
+                    <h1>
+                        Sign up
+                    </h1>
+                    <Form>
+                        <Form.Group controlId="formBasicUserName">
+                            <Form.Label>UserName</Form.Label>
+                            <Form.Control type="username" placeholder="Enter username" value={this.state.field.username}/>
+                            <Form.Text className="text-muted">
+                                Any names you want to display on schedule
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" value={this.state.field.password}/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Remember me" />
+                        </Form.Group>
+                        <Button variant="secondary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                </Container>
+
             </div>
         );
     }
