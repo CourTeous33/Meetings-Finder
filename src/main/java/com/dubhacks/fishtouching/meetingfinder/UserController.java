@@ -2,8 +2,13 @@ package com.dubhacks.fishtouching.meetingfinder;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api")
@@ -18,14 +23,14 @@ public class UserController {
 		return userRepository.findAll();
 	}
 	
-	@GetMapping(path="/user-schedule/{Uid}") 
-	public @ResponseBody JSONObject getAllEvents() {
-		return new JSONObject("{}");
-	}
-	
-	@GetMapping(path="/find-user/{UName}")
-	public @ResponseBody Iterable<Event> getUserEvents() {
-		
+	@GetMapping(path="/user-schedule/{Uid}")
+	public @ResponseBody ResponseEntity<?> getUserEvents(@PathVariable String Uid) {
+		List<Event> res = userRepository.findUserEvent(Uid);
+		if (res == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<List<Event>>(res, HttpStatus.OK);
+		}
 	}
 	 
 }
