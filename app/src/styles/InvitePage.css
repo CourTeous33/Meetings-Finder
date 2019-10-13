@@ -9,11 +9,30 @@
 
 .member {
     margin: 5px;
+    border: 1px solid grey;
+    border-radius: 3pt;
+    width: 120px;
+    height: 50px;
+    font-size: 1em;
+    text-align: center;
+    box-shadow: 2px 2px grey;
+}
+
+.closeButton {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin-left: 85%;
+}
+
+.member p {
+    margin-bottom: 0;
 }
 
 .members, .input {
     justify-content: center;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .input {
