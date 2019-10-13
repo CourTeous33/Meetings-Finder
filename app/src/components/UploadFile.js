@@ -15,7 +15,7 @@ class UploadFile extends Component{
         }
     };
 
-    normFile = e => {
+    normFile = (e) => {
         console.log('Upload event:', e);
         if (Array.isArray(e)) {
             return e;

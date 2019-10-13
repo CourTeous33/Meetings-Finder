@@ -55,7 +55,7 @@ class Profile extends Component{
             <h1>Loading</h1>
         ) : (
           <div className={"profile-content-container"}>
-              <p>This is profile</p>
+              <p>Profile of {this.props.uid}</p>
               <Schedule events={this.state.events}/>
           </div>
         );
@@ -63,7 +63,6 @@ class Profile extends Component{
 }
 
 Profile.propTypes = {
-    uName: PropTypes.string.isRequired,
     uid: PropTypes.string.isRequired,
 };
 

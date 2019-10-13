@@ -24,7 +24,7 @@ function App() {
                 <Route path={"/login"}>
                     <Login />
                 </Route>
-                <Route path="/profile">
+                <Route path="/profile/:id">
                     <ProfileContainer />
                 </Route>
                 <Route path="/upload">

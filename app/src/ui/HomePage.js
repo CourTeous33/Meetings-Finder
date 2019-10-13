@@ -1,9 +1,10 @@
 import React from 'react';
 import {Button} from 'antd';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import '../styles/HomePage.css';
 
 export default class HomePage extends React.Component {
+
     constructor(props) {
         super(props);
     }
@@ -14,7 +15,7 @@ export default class HomePage extends React.Component {
             borderRadius: '8pt',
             cursor: 'pointer',
             MarginColor: 'transparent'
-        }
+        };
         return (
             <div className="HomePage">
                 <div className="name">
@@ -29,7 +30,7 @@ export default class HomePage extends React.Component {
                     </div>
                 </div>
                 <div className="buttons">
-                    <Link to="/signup">
+                    <Link to="/register">
                         <Button className="signup" style={myStyle}>Sign Up</Button>
                     </Link>
                     <Link to="/login">

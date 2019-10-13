@@ -12,15 +12,39 @@ class Registration extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            field: {}
+            field: {},
+            toProfile: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(event) {
-        alert("Your registration is submitted");
-        event.preventDefault();
-    }
 
+    handleSubmit = (event) => {
+        fetch('/api/create-user/',{
+            method: 'GET',
+            body: {
+                'uid': this.state.field['username'],
+                'password': this.state.field['password'],
+            }
+        }).then((response) => {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                return;
+            }
+
+            response.json().then((data) => {
+                this.setState({
+                    toProfile: this.state.field['username'],
+                });
+            })
+        })
+    };
+
+    handleChange = (event) => {
+        let fieldName = event.target.name;
+        let fleldVal = event.target.value;
+        this.setState({field: {...this.state.field, [fieldName]: fleldVal}});
+    };
 
     render() {
         return (
@@ -36,7 +60,14 @@ class Registration extends Component {
                     <Form>
                         <Form.Group controlId="formBasicUserName">
                             <Form.Label>UserName</Form.Label>
-                            <Form.Control type="username" maxLength = "12" placeholder="Enter username within 12 characters" value={this.state.field.username}/>
+                            <Form.Control
+                                name={"username"}
+                                type="username"
+                                maxLength = "12"
+                                placeholder="Enter username within 12 characters"
+                                defaultValue={this.state.field.username}
+                                onChange={(e) => this.handleChange(e)}
+                            />
                             <Form.Text className="text-muted">
                                 Any names you want to display on schedule
                             </Form.Text>
@@ -44,13 +75,21 @@ class Registration extends Component {
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" value={this.state.field.password}/>
+                            <Form.Control
+                                name={"password"}
+                                type="password"
+                                placeholder="Password"
+                                defaultValue={this.state.field.password}
+                                onChange={(e) => this.handleChange(e)}
+                            />
                         </Form.Group>
-                        <Link to="/Login">
-                            <Button variant="secondary" type="submit" data-toggle="modal" data-target="#popup">
-                                Submit
-                            </Button>
-                        </Link>
+                        <Button onClick={(e) => this.handleSubmit()}
+                                variant="secondary"
+                                type="submit"
+                                data-toggle="modal"
+                                data-target="#popup">
+                            Submit
+                        </Button>
                     </Form>
                 </Container>
             </div>

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useParams} from 'react';
 import Profile from './Profile';
 
 const ProfileContainer = () => {
+    const { id }= useParams();
     return (
       <div className={"profile-container"}>
-          <Profile uName={'1234abc'} uid={'001'}/>
+          <Profile uid={id}/>
       </div>
     );
 };
