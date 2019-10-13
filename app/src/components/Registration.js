@@ -5,6 +5,8 @@ import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Helmet from "react-helmet";
+import Link from "react-router-dom/Link";
+
 
 class Registration extends Component {
     constructor(props) {
@@ -43,14 +45,15 @@ class Registration extends Component {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" value={this.state.field.password}/>
                         </Form.Group>
-
-                        <Button variant="secondary" type="submit" >
-                            Submit
-                        </Button>
+                        <Link to="/Login">
+                            <Button variant="secondary" type="submit" data-toggle="modal" data-target="#popup">
+                                Submit
+                            </Button>
+                        </Link>
                     </Form>
                 </Container>
-
             </div>
+
         );
     }
 }

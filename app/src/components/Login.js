@@ -5,6 +5,7 @@ import {Button} from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Helmet from "react-helmet";
 import '../styles/Registration.css';
+import Link from "react-router-dom/Link";
 
 class Login extends Component{
     constructor(props) {
@@ -43,9 +44,11 @@ class Login extends Component{
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Remember me" />
                         </Form.Group>
-                        <Button variant="secondary" type="submit">
-                            Submit
-                        </Button>
+                        <Link to="/Profile">
+                            <Button variant="secondary" type="submit">
+                                Submit
+                            </Button>
+                        </Link>
                     </Form>
                 </Container>
 
