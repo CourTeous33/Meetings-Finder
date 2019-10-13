@@ -11,14 +11,44 @@ class Login extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            field: {}
-        };
+            username: null,
+            password: null
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
-    }
+        let formData = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': ''
+        }
+        axios
+            .post(/* api */ '/api/login/', formData, {
+                headers: headers})
+            .then( res => {
+
+            }).catch(err => {
+
+            });
+    };
+
+    handleChange = (event, type) => {
+        event.preventDefault();
+        if (type === 'username') {
+            this.setState({
+                username: event.target.value
+            });
+        } else {
+            this.setState({
+                password: event.target.value
+            });
+        }
+    };
 
     render() {
         return (
@@ -34,12 +64,14 @@ class Login extends Component{
                     <Form>
                         <Form.Group controlId="formBasicUserName">
                             <Form.Label>UserName</Form.Label>
-                            <Form.Control type="username" placeholder="Enter username" value={this.state.field.username}/>
+                            <Form.Control type="username" placeholder="Enter username" value={this.state.username}
+                             onChange={(e) => this.handleChange(e, 'username')}/>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" value={this.state.field.password}/>
+                            <Form.Control type="password" placeholder="Password" value={this.state.password}
+                                          onChange={(e) => this.handleChange(e, 'password')}/>
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Remember me" />
