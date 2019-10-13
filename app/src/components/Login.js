@@ -50,7 +50,6 @@ class Login extends Component{
                 <Helmet>
                     <style>{'body { background-color: #eeeeee; }'}</style>
                 </Helmet>
-
                 <Container>
                     <h1>
                         Login
