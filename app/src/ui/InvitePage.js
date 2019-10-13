@@ -1,26 +1,33 @@
 import React from 'react';
 import axios from 'axios';
 import {Button, Icon} from 'antd';
-import {Link} from 'react-router-dom';
 import "../styles/InvitePage.css"
 
 export default class InvitePage extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
-            meetingUser: [
-                {id: 1,
-                 name: "user1"},
-                {id: 2,
-                 name: "user2"}
-            ]
+            meetingUser: [],
+            counter: 3,
+            username: ""
         }
         this.handleInvite = this.handleInvite.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            username: event.target.value
+        });
     }
 
     handleInvite = (event) => {
         event.preventDefault();
-        axios
+        let users = this.state.meetingUser;
+        users.push({key: this.state.counter,
+                    name: this.state.username});
+    /*    axios
             .post()
             .then(res => {
                 // TODO: interpret response into this
@@ -31,8 +38,24 @@ export default class InvitePage extends React.Component {
             })
             .catch(err=>{
                 alert("Some error happened. Please try again later.");
-            });
+            });*/
+        this.setState((prevState) =>({
+                meetingUser: users,
+                counter: prevState.counter + 1
+            })
+        )
     };
+
+    handleClose = (event, key) => {
+        event.persist();
+        let newMeetingUser = this.state.meetingUser.filter(curUser => {
+            return curUser.key !== key;
+        })
+        this.setState( {
+            meetingUser: newMeetingUser
+        });
+        console.log(this.state.meetingUser);
+    }
 
     render() {
         const plusStyle = {
@@ -47,8 +70,12 @@ export default class InvitePage extends React.Component {
             width: '10em'
         };
 
-        const users = this.state.meetingUser.map((user, key) =>
-            <div className="member" key={user.id}>{user.name}</div>
+        const users = this.state.meetingUser.map((curUser) =>
+            <div className="member" key={curUser.key} >
+                <div className="closeButton" onClick={(e) => this.handleClose(e, curUser.key)}>
+                    <Icon type="close" /></div>
+                <p>{curUser.name}</p>
+            </div>
         );
 
         return (
@@ -61,8 +88,10 @@ export default class InvitePage extends React.Component {
                         {users}
                     </div>
                     <div className='input'>
-                        <textarea id="textareabox" name="textarea1" placeholder="Member's Username">
-                        </textarea>
+                        <input type="text" value={this.state.username} id="textareabox"
+                               placeholder="Member's Username"
+                                onChange={this.handleChange}>
+                        </input>
                         <div>
                             <Icon type="plus-circle" style={plusStyle} onClick={this.handleInvite}/>
                         </div>

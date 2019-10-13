@@ -14,9 +14,9 @@ public class MeetingFinderApplication {
 	public DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName(com.mysql.cj.jdbc.Driver.class.getName());
-		ds.setUrl("jdbc:mysql://localhost:3306/schedule?useSSL=false");
+		ds.setUrl("jdbc:mysql://localhost:3306/schedule?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
 		ds.setUsername("root");
-		ds.setPassword("nst1998112");
+		ds.setPassword("Grace666");
 		return ds;
 	}
     
