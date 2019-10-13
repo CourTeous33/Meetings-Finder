@@ -28,7 +28,7 @@ class Login extends Component{
             'Authorization': ''
         }
         axios
-            .post(/* api */ '/api/login/', formData, {
+            .get(/* api */ '/api/login/', formData, {
                 headers: headers})
             .then( res => {
 
@@ -39,15 +39,9 @@ class Login extends Component{
 
     handleChange = (event, type) => {
         event.preventDefault();
-        if (type === 'username') {
-            this.setState({
-                username: event.target.value
-            });
-        } else {
-            this.setState({
-                password: event.target.value
-            });
-        }
+        this.setState({
+            [type]: event.target.value
+        });
     };
 
     render() {
