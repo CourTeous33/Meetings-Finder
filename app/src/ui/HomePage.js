@@ -22,9 +22,11 @@ export default class HomePage extends React.Component {
                         <a id="first">o </a>
                         B
                         <a id="second">e </a>
+                    </p>
+                    <div>
                         D
                         <a id="third">etermined</a>
-                    </p>
+                    </div>
                 </div>
                 <div className="buttons">
                     <Link to="/signup">

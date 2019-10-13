@@ -17,8 +17,12 @@ export default class InvitePage extends React.Component {
         event.preventDefault();
         axios
             .post()
-            .then()
-            .then()
+            .then(res=> {
+                this.setState((prevState)=>{
+                        return {meetingUser: [prevState.meetingUser, {newUser: "a"}]};
+                    }
+                )
+            })
             .catch(err=>{
                 console.log("failed to log in", err);
                 this.setState({
@@ -47,7 +51,7 @@ export default class InvitePage extends React.Component {
                 </div>
                 <div className="invitees">
                     <div className='input'>
-                        <textarea id="textareabox" name="textarea1" placeholder="Username">
+                        <textarea id="textareabox" name="textarea1" placeholder="Member's Username">
                         </textarea>
                         <div>
                             <Icon type="plus-circle" style={plusStyle} onClick={this.handleInvite}/>
@@ -55,7 +59,7 @@ export default class InvitePage extends React.Component {
                     </div>
                 </div>
                 <div className="find">
-                    <Button style={buttonStyle}>Find</Button>
+                    <Button style={buttonStyle}>Find time</Button>
                 </div>
             </div>
         )

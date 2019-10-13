@@ -12,8 +12,9 @@
 }
 
 .name p {
-    font-size: 10em;
+    font-size: 8em;
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 0;
 }
 
 #first {
@@ -29,5 +30,10 @@
 }
 
 .name {
-    margin: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.name div {
+    font-size: 8em;
 }
