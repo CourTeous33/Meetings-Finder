@@ -3,8 +3,7 @@ package com.dubhacks.fishtouching.meetingfinder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserRepository {
 	
 	@Autowired
-    private NamedParameterJdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
  
     @Transactional(readOnly=true)
     public List<User> findAll() {
@@ -21,6 +20,7 @@ public class UserRepository {
     
     @Transactional(readOnly=true)
     public List<Event> findUserEvent(String Uid) {
-    	return jdbcTemplate.query("select * from event where Uid = ?", rse)
+    	String query = "select * from events where Uid = ?";
+    	return jdbcTemplate.query(query, new EventRowMapper(), Uid);
     }
 }

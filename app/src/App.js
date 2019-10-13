@@ -10,6 +10,7 @@ import ProfileContainer from './components/profile/ProfileContainer';
 import Registration from "./components/Registration";
 import HomePage from './ui/HomePage';
 import Login from "./components/Login";
+import InvitePage from "./ui/InvitePage";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/profile">
                     <ProfileContainer />
                 </Route>
+                <Route path='/InvitePage' component={InvitePage} />
             </Switch>
         </Router>
     );

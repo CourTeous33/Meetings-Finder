@@ -1,0 +1,39 @@
+.find {
+    text-align: center;
+}
+
+.invitees {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+}
+
+.otherThings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15em;
+}
+
+.otherThings > p {
+    font-size: 5em;
+}
+
+.find {
+    margin-top: 5em;
+}
+
+.name div i {
+    margin-bottom: 5%;
+}
+
+#textareabox {
+    font-size: 1.5em;
+    height: 1.7em;
+    width: 10em;
+    margin-right: 1em;
+}

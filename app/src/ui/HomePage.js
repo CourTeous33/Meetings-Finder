@@ -12,7 +12,8 @@ export default class HomePage extends React.Component {
         const myStyle = {
             fontSize: '1.5em',
             borderRadius: '8pt',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            MarginColor: 'transparent'
         }
         return (
             <div className="HomePage">
@@ -31,6 +32,9 @@ export default class HomePage extends React.Component {
                     </Link>
                     <Link to="/login">
                         <Button className="login" style={myStyle}>Log In</Button>
+                    </Link>
+                    <Link to='/InvitePage'>
+                        tester
                     </Link>
                 </div>
             </div>
