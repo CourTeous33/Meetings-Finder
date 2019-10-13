@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.HomePage {
+    text-align: center;
+}
+
+.buttons {
+    justify-content: space-around;
+    display: flex;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.name p {
+    font-size: 10em;
+    font-family: 'Roboto', sans-serif;
+}
+
+#first {
+    font-size: 0.7em;
+}
+
+#second {
+    font-size: 0.5em;
+}
+
+#third {
+    font-size: 0.3em;
+}
