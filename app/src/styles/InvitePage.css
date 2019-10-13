@@ -7,6 +7,15 @@
     margin-right: 10%;
 }
 
+.member {
+    margin: 5px;
+}
+
+.members, .input {
+    justify-content: center;
+    display: flex;
+}
+
 .input {
     display: flex;
     align-items: center;

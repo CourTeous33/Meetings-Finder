@@ -8,7 +8,12 @@ export default class InvitePage extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
-            meetingUser: []
+            meetingUser: [
+                {id: 1,
+                 name: "user1"},
+                {id: 2,
+                 name: "user2"}
+            ]
         }
         this.handleInvite = this.handleInvite.bind(this);
     }
@@ -17,39 +22,44 @@ export default class InvitePage extends React.Component {
         event.preventDefault();
         axios
             .post()
-            .then(res=> {
-                this.setState((prevState)=>{
-                        return {meetingUser: [prevState.meetingUser, {newUser: "a"}]};
-                    }
+            .then(res => {
+                // TODO: interpret response into this
+                this.setState(prevState =>({
+                        meetingUser: [prevState.meetingUser, {newUser: "a"}]
+                    })
                 )
             })
             .catch(err=>{
-                console.log("failed to log in", err);
-                this.setState({
-                    loginFailed: true
-                })
+                alert("Some error happened. Please try again later.");
             });
-
     };
 
     render() {
         const plusStyle = {
             fontSize: '6em',
             cursor: 'pointer'
-        }
+        };
 
         const buttonStyle={
             fontSize: '1.5em',
             borderRadius: '8pt',
             cursor: 'pointer',
             width: '10em'
-        }
+        };
+
+        const users = this.state.meetingUser.map((user, key) =>
+            <div className="member" key={user.id}>{user.name}</div>
+        );
+
         return (
             <div className="InvitePage">
                 <div className="otherThings">
                     <p>Invite your meeting members!</p>
                 </div>
                 <div className="invitees">
+                    <div className='members'>
+                        {users}
+                    </div>
                     <div className='input'>
                         <textarea id="textareabox" name="textarea1" placeholder="Member's Username">
                         </textarea>
