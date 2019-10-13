@@ -18,6 +18,10 @@ public class User {
     private String Email;
     private String Password;
     
+	public User() {
+		super();
+	}
+	
 	public User(String uid, String uname, String email, String password) {
 		super();
 		Uid = uid;

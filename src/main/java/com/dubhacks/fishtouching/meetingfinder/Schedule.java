@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
@@ -15,10 +17,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "times")
 public class Schedule {
-	
+	@EmbeddedId
 	String Uid;
 	String EventStartTime;
-	
+
 	public String getUid() {
 		return Uid;
 	}
