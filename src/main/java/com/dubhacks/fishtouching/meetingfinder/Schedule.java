@@ -1,19 +1,10 @@
 package com.dubhacks.fishtouching.meetingfinder;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "times")
 public class Schedule {
@@ -21,6 +12,14 @@ public class Schedule {
 	String Uid;
 	String EventStartTime;
 
+	public Schedule() {
+		super();
+	}
+	public Schedule(String uid, String eventStartTime) {
+		super();
+		Uid = uid;
+		EventStartTime = eventStartTime;
+	}
 	public String getUid() {
 		return Uid;
 	}
