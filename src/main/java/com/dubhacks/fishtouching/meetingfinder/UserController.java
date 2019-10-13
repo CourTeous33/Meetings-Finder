@@ -38,7 +38,7 @@ public class UserController {
 		long startTime = cwg.getStartTimeOfWeek();
 		long endTime = cwg.getEndTimeOfWeek();
 		
-		Ics2BusyEventList fileReader = new Ics2BusyEventList("C:/Users/LucyN/Desktop/dubhack/Meetings-Finder/src/main/resources/test.ics", startTime, endTime);
+		Ics2BusyEventList fileReader = new Ics2BusyEventList("C:/Users/LucyN/Desktop/dubhack/Meetings-Finder/src/main/resources/test1.ics", startTime, endTime);
 		List<Event> list = fileReader.process(fileReader.read());
 		
 		try {

@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 import java.util.Locale;
 
 public class CurrentWeekGetter {
-	private final static ZoneId TZ = ZoneId.of("Pacific/Auckland");
+	private final static ZoneId TZ = ZoneId.of("America/Los_Angeles");
 	
 	public long getStartTimeOfWeek() {
 		DayOfWeek firstDayOfWeek = WeekFields.of(Locale.US).getFirstDayOfWeek();

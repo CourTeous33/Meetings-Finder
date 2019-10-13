@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.model.Calendar;
+import net.fortuna.ical4j.model.Component;
 import net.fortuna.ical4j.model.component.VEvent;
 
 public class Ics2BusyEventList {
@@ -30,10 +31,10 @@ public class Ics2BusyEventList {
 	
 	public List<Event> process(Calendar item) {
 		String str = item.getProperty("X-WR-CALNAME").toString();
-		String[] arr = str.split("@");
+		String[] arr = str.substring(13).split("@");
 		String userName = arr[0];
 		
-		List<VEvent> eventList = item.getComponents("VEvent");
+		List<VEvent> eventList = item.getComponents(Component.VEVENT);
 		
 		// The List of free time but not divided into slot yet
 		List<Event> busyList = new ArrayList<Event>();
@@ -65,7 +66,7 @@ public class Ics2BusyEventList {
 		int dayOfWeek = (int) (dateMs / mPerDay);
 		long milliLeft = dateMs % mPerDay;
 		long minutes = TimeUnit.MILLISECONDS.toMinutes(milliLeft);
-		int startId = (int) (minutes % 15);
+		int startId = (int) (minutes / 15);
 		
 		res[0] = dayOfWeek;
 		res[1] = startId;
