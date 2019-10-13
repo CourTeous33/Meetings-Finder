@@ -21,6 +21,7 @@ class Registration extends Component {
         event.preventDefault();
     }
 
+
     render() {
         return (
             <div className="formregis">
@@ -35,7 +36,7 @@ class Registration extends Component {
                     <Form>
                         <Form.Group controlId="formBasicUserName">
                             <Form.Label>UserName</Form.Label>
-                            <Form.Control type="username" placeholder="Enter username" value={this.state.field.username}/>
+                            <Form.Control type="username" maxLength = "12" placeholder="Enter username within 12 characters" value={this.state.field.username}/>
                             <Form.Text className="text-muted">
                                 Any names you want to display on schedule
                             </Form.Text>
