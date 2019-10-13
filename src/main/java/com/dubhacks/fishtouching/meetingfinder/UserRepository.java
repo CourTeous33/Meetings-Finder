@@ -30,4 +30,9 @@ public class UserRepository {
     		jdbcTemplate.update(query, e.getUid(), e.getWeekDay(), e.getStartTime());
     	}	
     }
+    
+    public void addNewUser(User user) {
+    	String query = "INSERT INTO Users (Uid, Password, Email)" + " VALUES (?, ?, ?)";
+    	jdbcTemplate.update(query, user.getUid(), user.getPassword(), user.getEmail());
+    }
 }

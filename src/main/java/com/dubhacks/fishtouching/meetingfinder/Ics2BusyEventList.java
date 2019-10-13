@@ -1,6 +1,8 @@
 package com.dubhacks.fishtouching.meetingfinder;
 
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -11,19 +13,19 @@ import net.fortuna.ical4j.model.Component;
 import net.fortuna.ical4j.model.component.VEvent;
 
 public class Ics2BusyEventList {
-	private final String inputFileName;
+	private final String input;
 	private long startTime;
 	private long endTime;
 	
-	public Ics2BusyEventList(String inputFileName, long startTime, long endTime) {
+	public Ics2BusyEventList(String input, long startTime, long endTime) {
 		super();
-		this.inputFileName = inputFileName;
+		this.input = input;
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
 
 	public Calendar read() throws Exception {
-		FileInputStream fin = new FileInputStream(inputFileName);
+		InputStream fin = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));;
 		CalendarBuilder builder = new CalendarBuilder();
 		Calendar calendar = builder.build(fin);	
 		return calendar;

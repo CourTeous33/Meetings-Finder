@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class User {
     @Id
     private String Uid;
-    private String Uname;
     private String Email;
     private String Password;
     
@@ -15,24 +14,18 @@ public class User {
 		super();
 	}
 	
-	public User(String uid, String uname, String email, String password) {
+	public User(String uid, String email, String password) {
 		super();
 		Uid = uid;
-		Uname = uname;
 		Email = email;
 		Password = password;
 	}
+
 	public String getUid() {
 		return Uid;
 	}
 	public void setUid(String uid) {
 		Uid = uid;
-	}
-	public String getUname() {
-		return Uname;
-	}
-	public void setUname(String uname) {
-		Uname = uname;
 	}
 	public String getEmail() {
 		return Email;

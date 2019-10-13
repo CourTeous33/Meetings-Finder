@@ -32,13 +32,13 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping(path="/test")
-	public @ResponseBody ResponseEntity<?> importUserEvents() throws Exception {
+	@GetMapping(path="/upload-import-ics")
+	public @ResponseBody ResponseEntity<?> importUserEvents(@RequestBody String input) throws Exception {
 		CurrentWeekGetter cwg = new CurrentWeekGetter();
 		long startTime = cwg.getStartTimeOfWeek();
 		long endTime = cwg.getEndTimeOfWeek();
 		
-		Ics2BusyEventList fileReader = new Ics2BusyEventList("C:/Users/LucyN/Desktop/dubhack/Meetings-Finder/src/main/resources/test1.ics", startTime, endTime);
+		Ics2BusyEventList fileReader = new Ics2BusyEventList(input, startTime, endTime);
 		List<Event> list = fileReader.process(fileReader.read());
 		
 		try {
@@ -48,6 +48,19 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	 
+	
+	@GetMapping(path = "/create-user")
+	public @ResponseBody ResponseEntity<?> addNewUser(@RequestBody User user) throws Exception {
+		if (user != null) {
+			try {
+				userRepository.addNewUser(user);
+				return new ResponseEntity<>(HttpStatus.OK);
+			} catch (Exception e) {
+				return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			}
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+	}
+	
 }
 
