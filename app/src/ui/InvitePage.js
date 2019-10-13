@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {Button, Icon} from 'antd';
 import {Link} from 'react-router-dom';
 import "../styles/InvitePage.css"
@@ -9,7 +10,23 @@ export default class InvitePage extends React.Component {
         this.state ={
             meetingUser: []
         }
+        this.handleInvite = this.handleInvite.bind(this);
     }
+
+    handleInvite = (event) => {
+        event.preventDefault();
+        axios
+            .post()
+            .then()
+            .then()
+            .catch(err=>{
+                console.log("failed to log in", err);
+                this.setState({
+                    loginFailed: true
+                })
+            });
+
+    };
 
     render() {
         const plusStyle = {
@@ -33,7 +50,7 @@ export default class InvitePage extends React.Component {
                         <textarea id="textareabox" name="textarea1" placeholder="Username">
                         </textarea>
                         <div>
-                            <Icon type="plus-circle" style={plusStyle}/>
+                            <Icon type="plus-circle" style={plusStyle} onClick={this.handleInvite}/>
                         </div>
                     </div>
                 </div>
