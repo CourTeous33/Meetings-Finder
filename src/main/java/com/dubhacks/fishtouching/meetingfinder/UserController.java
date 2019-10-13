@@ -49,8 +49,8 @@ public class UserController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@GetMapping(path = "/create-user")
-	public @ResponseBody ResponseEntity<?> addNewUser(@RequestBody User user) throws Exception {
+	@PostMapping(path = "/create-user")
+	public @ResponseBody ResponseEntity<?> addNewUser(@RequestBody JSONObject user) throws Exception {
 		if (user != null) {
 			try {
 				userRepository.addNewUser(user);

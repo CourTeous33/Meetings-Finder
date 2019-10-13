@@ -2,10 +2,13 @@ package com.dubhacks.fishtouching.meetingfinder;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.google.gson.Gson;
 
 @Repository
 public class UserRepository {
@@ -31,8 +34,10 @@ public class UserRepository {
     	}	
     }
     
-    public void addNewUser(User user) {
+    public void addNewUser(JSONObject user) {
+    	Gson gson=new Gson();
+    	User u = gson.fromJson(user.toString(),User.class);
     	String query = "INSERT INTO Users (Uid, Password, Email)" + " VALUES (?, ?, ?)";
-    	jdbcTemplate.update(query, user.getUid(), user.getPassword(), user.getEmail());
+    	jdbcTemplate.update(query, u.getUid(), u.getPassword(), u.getEmail());
     }
 }
